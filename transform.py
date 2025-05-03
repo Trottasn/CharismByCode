@@ -6,10 +6,14 @@ from utils import PoSStripper
 if __name__ == '__main__':
     only_essential_parts_of_speech = False
 
+    use_full_verses = True
+
     # Loading from HuggingFace existing/saved models
     model = SentenceTransformer('all-mpnet-base-v2')
 
-    if only_essential_parts_of_speech:
+    if use_full_verses:
+        df = pd.read_csv('asv.csv')
+    elif only_essential_parts_of_speech:
         df = pd.read_csv('asv_chapters_stripped.csv')
     else:
         df = pd.read_csv('asv_chapters.csv')
@@ -20,7 +24,7 @@ if __name__ == '__main__':
 
     corpus_embeddings = model.encode(corpus, show_progress_bar=True, convert_to_tensor=True)
 
-    query = "Would the Lord allow women priests?"
+    query = "Did the Jews or the Romans kill Christ?"
     if only_essential_parts_of_speech:
         query = PoSStripper().strip(query)
 

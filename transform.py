@@ -24,7 +24,7 @@ if __name__ == '__main__':
 
     corpus_embeddings = model.encode(corpus, show_progress_bar=True, convert_to_tensor=True)
 
-    query = "Did the Jews or the Romans kill Christ?"
+    query = "Where was Jonah from?"
     if only_essential_parts_of_speech:
         query = PoSStripper().strip(query)
 

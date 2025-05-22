@@ -1,6 +1,5 @@
 import nltk
 
-
 class PoSStripper:
 
     def __init__(self):

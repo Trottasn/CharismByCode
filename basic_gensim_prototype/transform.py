@@ -1,7 +1,7 @@
 import pandas as pd
 from sentence_transformers import SentenceTransformer, util
 import re
-from utils import PoSStripper
+from utils.utils import PoSStripper
 
 if __name__ == '__main__':
     only_essential_parts_of_speech = False
@@ -12,11 +12,11 @@ if __name__ == '__main__':
     model = SentenceTransformer('all-mpnet-base-v2')
 
     if use_full_verses:
-        df = pd.read_csv('asv.csv')
+        df = pd.read_csv('../asv.csv')
     elif only_essential_parts_of_speech:
-        df = pd.read_csv('asv_chapters_stripped.csv')
+        df = pd.read_csv('../utils/asv_chapters_stripped.csv')
     else:
-        df = pd.read_csv('asv_chapters.csv')
+        df = pd.read_csv('../utils/asv_chapters.csv')
 
     corpus = []
     for key, value in df.iterrows():
@@ -24,7 +24,7 @@ if __name__ == '__main__':
 
     corpus_embeddings = model.encode(corpus, show_progress_bar=True, convert_to_tensor=True)
 
-    query = "Did the Jews or the Romans kill Christ?"
+    query = "Spirit"
     if only_essential_parts_of_speech:
         query = PoSStripper().strip(query)
 

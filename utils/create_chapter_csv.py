@@ -3,11 +3,10 @@ import re
 # Preprocessing
 import pandas as pd
 # PoS stripping for optional preprocessing
-from utils import PoSStripper
+from utils.utils import PoSStripper
 
 
-def read_corpus(only_essential_parts_of_speech=False):
-    df = pd.read_csv('asv.csv')
+def read_corpus(df, only_essential_parts_of_speech=False):
     actual_chapter = 0
     total_chapter = 0
     book_name = "Genesis"
@@ -38,8 +37,3 @@ def read_corpus(only_essential_parts_of_speech=False):
     else:
         continuous_output_data_frame.to_csv('asv_chapters.csv')
     return continuous_output_data_frame
-
-
-if __name__ == '__main__':
-    read_corpus()
-    read_corpus(only_essential_parts_of_speech=True)

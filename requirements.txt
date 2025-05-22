@@ -1,5 +1,7 @@
-nltk
-pandas
-numpy
-sentence_transformers
-tf-keras
+nltk~=3.9.1
+pandas~=2.2.3
+torch
+sentencepiece
+transformers~=4.51.3
+huggingface-hub~=0.30.2
+sentence-transformers~=4.1.0
